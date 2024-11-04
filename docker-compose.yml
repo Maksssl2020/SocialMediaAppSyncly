@@ -1,0 +1,9 @@
+﻿services:
+  api:
+    image: mcr.microsoft.com/azure-sql-edge
+    container_name: syncly_sql
+    environment:
+      ACCEPT_EULA: "1"
+      MSSQL_SA_PASSWORD: Leszczu2039#
+    ports:
+      - "5432:5432"
