@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "y4f9v41JblM=",
+  "dgSpecHash": "a0qNZoV2PpE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\Api\\Api.csproj",
+  "projectFilePath": "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maksy\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\maksy\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

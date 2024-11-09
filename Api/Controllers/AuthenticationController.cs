@@ -9,6 +9,11 @@ namespace SocialMediaAppSyncly.Controllers;
 [Route("/api/[controller]")]
 public class AuthenticationController(IAuthenticationRepository authenticationRepository) : ControllerBase {
 
+    [HttpGet]
+    public ActionResult Get(){
+        return Ok("Authentication");
+    }
+    
     [HttpPost("register")]
     public async Task<ActionResult<ApplicationUserDto>> Register(RegisterRequestDto registerRequestDto){
         try {

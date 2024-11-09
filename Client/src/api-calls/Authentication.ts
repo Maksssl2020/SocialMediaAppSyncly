@@ -3,7 +3,7 @@ import { RegisteredUser } from "../models/RegisteredUser.ts";
 import axios from "./AxiosConfig.ts";
 import { LoginRequest } from "../models/LoginRequest.ts";
 
-export const RegisterUser = async (
+export const RegisterUseCall = async (
   registerData: RegisterRequest,
 ): Promise<RegisteredUser> => {
   try {

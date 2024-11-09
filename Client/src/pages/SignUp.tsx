@@ -1,7 +1,150 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { RegisterValidator } from "../validators/RegisterValidator.ts";
+import AuthenticationDataInput from "../components/input/AuthenticationDataInput.tsx";
+import useRegisterUserMutation from "../hooks/mutations/useRegisterUserMutation.ts";
+import { RegisterRequest } from "../models/RegisterRequest.ts";
 
 const SignUp = () => {
-  return <div></div>;
+  const { register, handleSubmit, getValues, reset, formState } = useForm({
+    resolver: yupResolver(RegisterValidator),
+  });
+  const { errors } = formState;
+  const { registerUser, registeringUser } = useRegisterUserMutation();
+
+  console.log(getValues("username"));
+
+  const data = [
+    {
+      type: "text",
+      placeholder: "Username*",
+      register: "username",
+      errors: errors?.username?.message,
+    },
+    {
+      type: "email",
+      placeholder: "E-mail address*",
+      register: "email",
+      errors: errors?.email?.message,
+    },
+    {
+      type: "text",
+      placeholder: "First name*",
+      register: "firstName",
+      errors: errors?.firstName?.message,
+    },
+    {
+      type: "text",
+      placeholder: "Last name*",
+      register: "lastName",
+      errors: errors?.lastName?.message,
+    },
+    {
+      type: "text",
+      placeholder: "Country",
+      register: "country",
+      errors: undefined,
+    },
+    {
+      type: "text",
+      placeholder: "City",
+      register: "city",
+      errors: undefined,
+    },
+    {
+      type: "date",
+      placeholder: "Date of birth*",
+      register: "dateOfBirth",
+      errors: errors?.dateOfBirth?.message,
+    },
+    {
+      type: "password",
+      placeholder: "Password*",
+      register: "password",
+      errors: errors?.password?.message,
+    },
+    {
+      type: "password",
+      placeholder: "Confirm password*",
+      register: "confirmPassword",
+      errors: errors?.confirmPassword?.message,
+    },
+  ];
+
+  const submit = (data: RegisterRequest) => {
+    console.log(data);
+    registerUser(data);
+    reset();
+  };
+
+  if (registeringUser) {
+    return;
+  }
+
+  return (
+    <div
+      className={
+        "flex h-full w-full items-center justify-center overflow-y-auto py-24"
+      }
+    >
+      <div
+        className={
+          "flex h-auto min-h-[1050px] w-[650px] flex-col justify-between self-center rounded-xl border-2 border-custom-gray-100 bg-custom-black-100 px-12 py-16 text-custom-white-100"
+        }
+      >
+        <h1 className={"mb-8 w-full text-center text-5xl"}>Sign Up</h1>
+        <form
+          autoFocus={false}
+          onSubmit={handleSubmit((data) =>
+            submit({
+              username: data.username,
+              email: data.email,
+              password: data.password,
+              firstName: data.firstName,
+              lastName: data.lastName,
+              gender: "MALE",
+              country: data.country,
+              city: data.city,
+              dateOfBirth: data.dateOfBirth,
+            }),
+          )}
+          className={
+            "flex h-auto w-full flex-col items-center justify-center gap-8"
+          }
+        >
+          {data.map((data, index) => (
+            <AuthenticationDataInput
+              key={index}
+              type={data.type}
+              placeholder={data.placeholder}
+              register={{ ...register(data.register) }}
+              errors={data.errors}
+            />
+          ))}
+          <motion.button
+            whileHover={{
+              backgroundColor: "#F8F9FC",
+              color: "#1B1C25",
+              borderColor: "#F8F9FC",
+            }}
+            style={{
+              backgroundColor: "#1B1C25",
+              color: "#F8F9FC",
+              borderColor: "#AEAFB8",
+            }}
+            type={"submit"}
+            className={
+              "border-custom-gray-200 text-custom-gray-200 h-[65px] w-full rounded-xl border-2 text-3xl font-bold uppercase tracking-wider"
+            }
+          >
+            submit
+          </motion.button>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default SignUp;

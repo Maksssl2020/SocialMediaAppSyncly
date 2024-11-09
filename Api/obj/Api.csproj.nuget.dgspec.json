@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\Api\\Api.csproj": {}
+    "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\api\\Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\Api\\Api.csproj": {
+    "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\api\\Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\Api\\Api.csproj",
+        "projectUniqueName": "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\api\\Api.csproj",
         "projectName": "Api",
-        "projectPath": "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\Api\\Api.csproj",
+        "projectPath": "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\api\\Api.csproj",
         "packagesPath": "C:\\Users\\maksy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\Api\\obj\\",
+        "outputPath": "C:\\Users\\maksy\\RiderProjects\\SocialMediaAppSyncly\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\maksy\\AppData\\Roaming\\NuGet\\NuGet.Config",

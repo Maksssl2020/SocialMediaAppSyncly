@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useAuthentication } from "../../hooks/useAuthentication.ts";
 import { Outlet, useNavigate } from "react-router-dom";
+import { useAuthentication } from "../hooks/useAuthentication.ts";
 
 const AuthenticationRequired = () => {
-  const { isAuthenticated } = useAuthentication();
+  const isAuthenticated = useAuthentication();
   const navigate = useNavigate();
 
   useEffect(() => {

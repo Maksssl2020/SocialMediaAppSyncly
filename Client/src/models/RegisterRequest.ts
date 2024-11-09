@@ -5,7 +5,7 @@ export interface RegisterRequest {
   firstName: string;
   lastName: string;
   gender: string;
-  city: string;
-  country: string;
+  country?: string;
+  city?: string;
   dateOfBirth: Date;
 }

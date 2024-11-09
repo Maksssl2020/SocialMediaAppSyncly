@@ -12,6 +12,7 @@ export default {
         "custom-black-100": "#1B1C25",
         "custom-black-200": "#12131A",
         "custom-gray-100": "#22222B",
+        "custom-gray-200": "#AEAFB8",
         "custom-violet-200": "#373E57",
         "custom-violet-300": "#151728",
       },
