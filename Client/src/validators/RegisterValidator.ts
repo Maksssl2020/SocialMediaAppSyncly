@@ -1,10 +1,9 @@
 import * as Yup from "yup";
-import { RegisterRequest } from "../models/RegisterRequest.ts";
 import { AnyObject } from "yup";
 
 export const RegisterValidator: Yup.ObjectSchema<AnyObject> =
   Yup.object().shape({
-    username: Yup.string().required("Username is required!"),
+    userName: Yup.string().required("Username is required!"),
     email: Yup.string()
       .email("E-mail address must be valid!")
       .required("E-mail address is required!"),

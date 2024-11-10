@@ -16,6 +16,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     
     [HttpPost("register")]
     public async Task<ActionResult<ApplicationUserDto>> Register(RegisterRequestDto registerRequestDto){
+
         try {
             var user = await authenticationRepository.RegisterUserAsync(registerRequestDto);
             return Ok(user);

@@ -6,4 +6,4 @@
       ACCEPT_EULA: "1"
       MSSQL_SA_PASSWORD: Leszczu2039#
     ports:
-      - "5432:5432"
+      - "1433:1433"

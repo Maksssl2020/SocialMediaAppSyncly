@@ -6,6 +6,7 @@ import { LoginRequest } from "../models/LoginRequest.ts";
 export const RegisterUseCall = async (
   registerData: RegisterRequest,
 ): Promise<RegisteredUser> => {
+  console.log("RegisterUseCall", registerData);
   try {
     const result = await axios.post<RegisteredUser>(
       "/authentication/register",
@@ -13,6 +14,7 @@ export const RegisterUseCall = async (
     );
     return result.data;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };
@@ -27,6 +29,7 @@ export const LoginUser = async (
     );
     return result.data;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };

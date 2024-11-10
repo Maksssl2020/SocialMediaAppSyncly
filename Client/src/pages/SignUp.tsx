@@ -20,8 +20,8 @@ const SignUp = () => {
     {
       type: "text",
       placeholder: "Username*",
-      register: "username",
-      errors: errors?.username?.message,
+      register: "userName",
+      errors: errors?.userName?.message,
     },
     {
       type: "email",
@@ -99,15 +99,15 @@ const SignUp = () => {
           autoFocus={false}
           onSubmit={handleSubmit((data) =>
             submit({
-              username: data.username,
+              userName: data.userName,
               email: data.email,
               password: data.password,
               firstName: data.firstName,
               lastName: data.lastName,
-              gender: "MALE",
+              gender: data.gender,
               country: data.country,
               city: data.city,
-              dateOfBirth: data.dateOfBirth,
+              dateOfBirth: data.dateOfBirth.toLocaleDateString(),
             }),
           )}
           className={
@@ -123,6 +123,25 @@ const SignUp = () => {
               errors={data.errors}
             />
           ))}
+          <motion.select
+            whileFocus={{
+              backgroundColor: "#1B1C25",
+              borderColor: "#F8F9FC",
+              color: "#F8F9FC",
+            }}
+            style={{
+              backgroundColor: "#00000000",
+              borderColor: "#AEAFB8",
+              color: "#AEAFB8",
+            }}
+            aria-placeholder={"Gender"}
+            className={"h-[50px] w-full rounded-xl border-2"}
+            {...register("gender")}
+          >
+            <option>Female</option>
+            <option>Male</option>
+            <option>Other</option>
+          </motion.select>
           <motion.button
             whileHover={{
               backgroundColor: "#F8F9FC",
@@ -136,7 +155,7 @@ const SignUp = () => {
             }}
             type={"submit"}
             className={
-              "border-custom-gray-200 text-custom-gray-200 h-[65px] w-full rounded-xl border-2 text-3xl font-bold uppercase tracking-wider"
+              "h-[65px] w-full rounded-xl border-2 border-custom-gray-200 text-3xl font-bold uppercase tracking-wider text-custom-gray-200"
             }
           >
             submit

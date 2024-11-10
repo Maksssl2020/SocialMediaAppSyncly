@@ -10,7 +10,7 @@ public static class ApplicationServiceExtension {
 
     public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration){
 
-        services.AddControllers();
+        services.AddControllers().AddJsonOptions(opt => opt.JsonSerializerOptions.PropertyNameCaseInsensitive = false);
         services.AddDbContext<ApplicationDbContext>(options => {
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
         });

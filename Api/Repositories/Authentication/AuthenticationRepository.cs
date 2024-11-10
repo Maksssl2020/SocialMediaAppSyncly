@@ -17,14 +17,20 @@ public class AuthenticationRepository(UserManager<ApplicationUser> userManager, 
         if (await IsEmailTaken(registerRequestDto.Email)) {
             throw new Exception("Email is already taken!");
         }
-        
+
         var applicationUser = mapper.Map<ApplicationUser>(registerRequestDto);
         var result = await userManager.CreateAsync(applicationUser, registerRequestDto.Password);
-
+        
         if (!result.Succeeded) {
             throw new Exception(result.Errors.ToString());
         }
-
+        
+        var roleResult = await userManager.AddToRoleAsync(applicationUser, "REGISTERED");
+        
+        if (!roleResult.Succeeded) {
+            throw new Exception(result.Errors.ToString());
+        }
+        
         return await LoginUserAsync(new LoginRequestDto
             { Password = registerRequestDto.Password, Username = registerRequestDto.Username });
     }
@@ -32,7 +38,7 @@ public class AuthenticationRepository(UserManager<ApplicationUser> userManager, 
     public async Task<ApplicationUserDto> LoginUserAsync(LoginRequestDto loginRequestDto){
         var foundUser = await userManager.Users
             .FirstOrDefaultAsync(u => u.UserName == loginRequestDto.Username);
-
+        
         if (foundUser?.UserName == null) {
             throw new Exception("Invalid username or password!");
         }
