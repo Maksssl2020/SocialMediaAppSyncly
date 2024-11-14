@@ -5,6 +5,9 @@
       <Path>Client</Path>
     </attachedFolders>
     <explicitIncludes />
-    <explicitExcludes />
+    <explicitExcludes>
+      <Path>Api/appsettings.Development.json</Path>
+      <Path>Api/appsettings.json</Path>
+    </explicitExcludes>
   </component>
 </project>
