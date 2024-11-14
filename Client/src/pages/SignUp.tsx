@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterValidator } from "../validators/RegisterValidator.ts";
 import AuthenticationDataInput from "../components/input/AuthenticationDataInput.tsx";
-import useRegisterUserMutation from "../hooks/mutations/useRegisterUserMutation.ts";
+import { useRegisterUserMutation } from "../hooks/mutations/useRegisterUserMutation.ts";
 import { RegisterRequest } from "../models/RegisterRequest.ts";
 
 const SignUp = () => {

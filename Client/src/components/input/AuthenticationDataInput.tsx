@@ -1,7 +1,24 @@
 import React from "react";
 import { motion } from "framer-motion";
+import {
+  FieldError,
+  UseFormRegister,
+  UseFormRegisterReturn,
+} from "react-hook-form";
 
-const AuthenticationDataInput = ({ type, placeholder, register, errors }) => {
+type AuthenticationDataInputProps = {
+  type: string;
+  placeholder?: string;
+  register?: UseFormRegisterReturn<any>;
+  errors?: any;
+};
+
+const AuthenticationDataInput = ({
+  type,
+  placeholder,
+  register,
+  errors,
+}: AuthenticationDataInputProps) => {
   console.log(errors);
 
   return (
@@ -12,7 +29,7 @@ const AuthenticationDataInput = ({ type, placeholder, register, errors }) => {
         style={{ borderColor: "#AEAFB8", color: "#AEAFB8" }}
         placeholder={placeholder}
         className={
-          "border-custom-gray-200 placeholder:text-custom-gray-200 h-[50px] w-full rounded-xl border-2 bg-transparent px-2 focus:outline-none"
+          "h-[50px] w-full rounded-xl border-2 border-custom-gray-200 bg-transparent px-2 placeholder:text-custom-gray-200 focus:outline-none"
         }
         {...register}
       />

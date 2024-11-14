@@ -22,6 +22,7 @@ export const RegisterUseCall = async (
 export const LoginUser = async (
   loginData: LoginRequest,
 ): Promise<RegisteredUser> => {
+  console.log("LoginUser", loginData);
   try {
     const result = await axios.post<RegisteredUser>(
       "/authentication/login",

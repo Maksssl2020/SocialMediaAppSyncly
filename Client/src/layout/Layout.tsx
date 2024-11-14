@@ -7,6 +7,7 @@ const Layout = () => {
     <div className={"font-lato"}>
       <Header />
       <Outlet />
+      <footer className={"h-[150px] w-full"}></footer>
     </div>
   );
 };

@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAuthentication } from "../hooks/useAuthentication.ts";
+import { RootNames } from "../constants/rootNames.ts";
 
 const AuthenticationRequired = () => {
   const isAuthenticated = useAuthentication();
@@ -10,7 +11,7 @@ const AuthenticationRequired = () => {
     console.log(isAuthenticated);
 
     if (!isAuthenticated) {
-      navigate("/sign-in");
+      navigate(RootNames.SIGN_IN);
     }
   }, [isAuthenticated]);
 

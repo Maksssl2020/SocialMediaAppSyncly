@@ -1,7 +1,8 @@
-import { useContext } from "react";
-import { AuthenticationContext } from "../context/AuthenticationProvider.tsx";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store/store.ts";
 
 export const useAuthentication = (): boolean => {
-  const { isAuthenticated } = useContext(AuthenticationContext);
-  return isAuthenticated;
+  return useSelector(
+    (state: RootState) => state.authentication.isAuthenticated,
+  );
 };

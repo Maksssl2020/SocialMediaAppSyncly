@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import React from "react";
 import Layout from "./layout/Layout.tsx";
 import Home from "./pages/Home.tsx";
 import SignIn from "./pages/SignIn.tsx";
 import SignUp from "./pages/SignUp.tsx";
 import AuthenticationRequired from "./router/AuthenticationRequired.tsx";
+import { RootNames } from "./constants/rootNames.ts";
 
 function App() {
   return (
@@ -12,12 +12,12 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route element={<AuthenticationRequired />}>
-            <Route path={"/"} element={<Home />} />
+            <Route path={RootNames.HOME} element={<Home />} />
           </Route>
         </Route>
 
-        <Route path={"/sign-in"} element={<SignIn />} />
-        <Route path={"/sign-up"} element={<SignUp />} />
+        <Route path={RootNames.SIGN_IN} element={<SignIn />} />
+        <Route path={RootNames.SIGN_UP} element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
