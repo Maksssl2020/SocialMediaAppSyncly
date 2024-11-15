@@ -15,7 +15,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     }
     
     [HttpPost("register")]
-    public async Task<ActionResult<ApplicationUserDto>> Register(RegisterRequestDto registerRequestDto){
+    public async Task<ActionResult<AccountDataDto>> Register(RegisterRequestDto registerRequestDto){
 
         try {
             var user = await authenticationRepository.RegisterUserAsync(registerRequestDto);
@@ -27,7 +27,7 @@ public class AuthenticationController(IAuthenticationRepository authenticationRe
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<ApplicationUserDto>> Login(LoginRequestDto loginRequestDto){
+    public async Task<ActionResult<AccountDataDto>> Login(LoginRequestDto loginRequestDto){
         try {
             var user = await authenticationRepository.LoginUserAsync(loginRequestDto);
             return Ok(user);

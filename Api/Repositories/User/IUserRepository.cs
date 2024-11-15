@@ -1,7 +1,6 @@
 using SocialMediaAppSyncly.DTOs;
 using SocialMediaAppSyncly.Entities.ApplicationUser;
-
-namespace SocialMediaAppSyncly.Repositories;
+namespace SocialMediaAppSyncly.Repositories.User;
 
 public interface IUserRepository {
     void Update(ApplicationUser applicationUser);

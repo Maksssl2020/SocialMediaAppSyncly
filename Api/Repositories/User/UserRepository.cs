@@ -5,7 +5,7 @@ using SocialMediaAppSyncly.Data;
 using SocialMediaAppSyncly.DTOs;
 using SocialMediaAppSyncly.Entities.ApplicationUser;
 
-namespace SocialMediaAppSyncly.Repositories;
+namespace SocialMediaAppSyncly.Repositories.User;
 
 public class UserRepository(ApplicationDbContext applicationDbContext, IMapper mapper) : IUserRepository {
     public void Update(ApplicationUser applicationUser){

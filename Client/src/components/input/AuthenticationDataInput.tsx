@@ -1,10 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  FieldError,
-  UseFormRegister,
-  UseFormRegisterReturn,
-} from "react-hook-form";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 type AuthenticationDataInputProps = {
   type: string;

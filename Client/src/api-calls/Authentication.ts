@@ -1,14 +1,12 @@
 import { RegisterRequest } from "../models/RegisterRequest.ts";
-import { RegisteredUser } from "../models/RegisteredUser.ts";
 import axios from "./AxiosConfig.ts";
 import { LoginRequest } from "../models/LoginRequest.ts";
 
 export const RegisterUseCall = async (
   registerData: RegisterRequest,
-): Promise<RegisteredUser> => {
-  console.log("RegisterUseCall", registerData);
+): Promise<AuthenticatorResponse> => {
   try {
-    const result = await axios.post<RegisteredUser>(
+    const result = await axios.post<AuthenticatorResponse>(
       "/authentication/register",
       registerData,
     );
@@ -21,10 +19,10 @@ export const RegisterUseCall = async (
 
 export const LoginUser = async (
   loginData: LoginRequest,
-): Promise<RegisteredUser> => {
+): Promise<AuthenticatorResponse> => {
   console.log("LoginUser", loginData);
   try {
-    const result = await axios.post<RegisteredUser>(
+    const result = await axios.post<AuthenticatorResponse>(
       "/authentication/login",
       loginData,
     );

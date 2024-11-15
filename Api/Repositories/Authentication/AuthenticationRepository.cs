@@ -1,7 +1,6 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SocialMediaAppSyncly.DTOs;
 using SocialMediaAppSyncly.DTOs.Authentication;
 using SocialMediaAppSyncly.Entities.ApplicationUser;
 using SocialMediaAppSyncly.Services;
@@ -9,7 +8,7 @@ using SocialMediaAppSyncly.Services;
 namespace SocialMediaAppSyncly.Repositories.Authentication;
 
 public class AuthenticationRepository(UserManager<ApplicationUser> userManager, ITokenService tokenService, IMapper mapper) : IAuthenticationRepository {
-    public async Task<ApplicationUserDto> RegisterUserAsync(RegisterRequestDto registerRequestDto){
+    public async Task<AccountDataDto> RegisterUserAsync(RegisterRequestDto registerRequestDto){
         if (await IsUsernameTaken(registerRequestDto.Username)) {
             throw new Exception("Username is already taken!");
         }
@@ -35,7 +34,7 @@ public class AuthenticationRepository(UserManager<ApplicationUser> userManager, 
             { Password = registerRequestDto.Password, Username = registerRequestDto.Username });
     }
 
-    public async Task<ApplicationUserDto> LoginUserAsync(LoginRequestDto loginRequestDto){
+    public async Task<AccountDataDto> LoginUserAsync(LoginRequestDto loginRequestDto){
         var foundUser = await userManager.Users
             .FirstOrDefaultAsync(u => u.UserName == loginRequestDto.Username);
         
@@ -49,18 +48,10 @@ public class AuthenticationRepository(UserManager<ApplicationUser> userManager, 
             throw new Exception("Invalid username or password!");
         }
         
-        return new ApplicationUserDto {
+        return new AccountDataDto {
+            UserId = foundUser.Id,
             Username = foundUser.UserName!,
-            Email = foundUser.Email!,
-            FirstName = foundUser.FirstName,
-            LastName = foundUser.LastName,
-            Gender = foundUser.Gender,
-            Token = await tokenService.GenerateToken(foundUser),
-            City = foundUser.City,
-            Country = foundUser.Country,
-            CreatedAt = foundUser.CreatedAt,
-            LastActive = foundUser.LastActive,
-            DateOfBirth = foundUser.DateOfBirth,
+            AccessToken = await tokenService.GenerateToken(foundUser)
         };
     }
 

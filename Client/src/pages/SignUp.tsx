@@ -15,7 +15,7 @@ const SignUp = () => {
   const { registerUser, registeringUser } = useRegisterUserMutation();
 
   console.log(getValues("username"));
-
+  console.log(errors["userName"]);
   const data = [
     {
       type: "text",

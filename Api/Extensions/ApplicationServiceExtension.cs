@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SocialMediaAppSyncly.Data;
-using SocialMediaAppSyncly.Repositories;
 using SocialMediaAppSyncly.Repositories.Authentication;
+using SocialMediaAppSyncly.Repositories.User;
 using SocialMediaAppSyncly.Services;
 
 namespace SocialMediaAppSyncly.Extensions;

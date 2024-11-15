@@ -4,10 +4,10 @@ import Header from "../components/header/Header.tsx";
 
 const Layout = () => {
   return (
-    <div className={"font-lato"}>
+    <div className={"min-h-screen font-lato"}>
       <Header />
       <Outlet />
-      <footer className={"h-[150px] w-full"}></footer>
+      {/*<footer className={"h-[450px] w-full"}></footer>*/}
     </div>
   );
 };

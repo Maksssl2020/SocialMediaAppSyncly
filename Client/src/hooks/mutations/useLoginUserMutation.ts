@@ -23,7 +23,12 @@ export const useLoginUserMutation = ({
     mutationKey: ["loginUser"],
     mutationFn: (loginData: LoginRequest) => LoginUser(loginData),
     onSuccess: (data) => {
-      dispatch(login(data.token));
+      dispatch(
+        login({
+          accessToken: data.token,
+          username: data.userName,
+        }),
+      );
 
       if (onSuccess) {
         onSuccess();
