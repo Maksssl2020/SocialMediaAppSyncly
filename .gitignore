@@ -485,3 +485,5 @@ Api/appsettings.json
 !/appsettings.json
 Api/appsettings.Development.json
 !/Api/appsettings.Development.json
+!/Api/appsettings.Development.json
+!/Api/appsettings.json

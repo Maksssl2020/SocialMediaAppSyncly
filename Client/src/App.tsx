@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn.tsx";
 import SignUp from "./pages/SignUp.tsx";
 import AuthenticationRequired from "./router/AuthenticationRequired.tsx";
 import { RootNames } from "./constants/rootNames.ts";
+import AccountWall from "./pages/AccountWall.tsx";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route element={<Layout />}>
           <Route element={<AuthenticationRequired />}>
             <Route path={RootNames.HOME} element={<Home />} />
+            <Route path={RootNames.USER_WALL} element={<AccountWall />} />
           </Route>
         </Route>
 

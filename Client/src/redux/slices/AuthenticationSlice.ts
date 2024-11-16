@@ -34,7 +34,10 @@ const authenticationSlice = createSlice({
 
       state.accessToken = action.payload.accessToken;
       state.username = action.payload.username;
+      state.userId = action.payload.userId;
       state.isAuthenticated = true;
+
+      console.log(action.payload);
 
       setAuthenticationValueInLocalStorage<string>(
         LOCAL_STORAGE_TOKEN_KEY,

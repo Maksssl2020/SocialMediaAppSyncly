@@ -7,11 +7,13 @@ import { RegisteredUser } from "../../models/RegisteredUser.ts";
 export const useUserQuery = () => {
   const userId = useSelector((state: RootState) => state.authentication.userId);
 
+  console.log(userId);
+
   const { data: user, isLoading: fetchingUser } =
     useQuery<RegisteredUser | null>({
       queryKey: ["userData", userId],
       queryFn: () => {
-        if (!userId) return;
+        if (!userId) return null;
         return GetUserByIdAsync(userId);
       },
       enabled: !!userId,

@@ -23,18 +23,19 @@ export const useLoginUserMutation = ({
     mutationKey: ["loginUser"],
     mutationFn: (loginData: LoginRequest) => LoginUser(loginData),
     onSuccess: (data) => {
+      console.log(data);
+
       dispatch(
         login({
-          accessToken: data.token,
+          accessToken: data.accessToken,
           username: data.userName,
+          userId: data.userId,
         }),
       );
 
       if (onSuccess) {
         onSuccess();
       }
-
-      navigate(RootNames.HOME);
     },
     onError: (error) => {
       if (onError) {

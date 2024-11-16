@@ -8,6 +8,7 @@ import AuthenticationDataInput from "../components/input/AuthenticationDataInput
 import { useLoginUserMutation } from "../hooks/mutations/useLoginUserMutation.ts";
 import { LoginRequest } from "../models/LoginRequest.ts";
 import { ApiError } from "../models/ApiError.ts";
+import { RootNames } from "../constants/rootNames.ts";
 
 type State = { inputType: "text" | "password"; password: "visible" | "hidden" };
 type Action = "show_password" | "hide_password";
@@ -37,6 +38,7 @@ const SignIn = () => {
   const { loginUser, loggingUser } = useLoginUserMutation({
     onSuccess: () => {
       reset();
+      navigate(RootNames.HOME);
     },
     onError: (error) => {
       setApiErrors(error);

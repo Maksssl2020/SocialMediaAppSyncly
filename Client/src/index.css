@@ -6,3 +6,19 @@ body, #root {
     min-height: 100vh;
     margin: 0;
 }
+
+.scrollbar {
+    &::-webkit-scrollbar {
+        width: 8px;
+        background: #12131A;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background: #F8F9FC;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+        cursor: pointer;
+    }
+}

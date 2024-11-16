@@ -7,7 +7,6 @@ public class ApplicationUserDto {
     public required string FirstName { get; set; }
     public required string LastName { get; set; }
     public required string Gender { get; set; }
-    public required string Token { get; set; }
     public string? Country { get; set; }
     public string? City { get; set; }
     public DateOnly DateOfBirth { get; set; }
