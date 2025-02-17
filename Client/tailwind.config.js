@@ -20,6 +20,7 @@ export default {
         "custom-gray-600": "#292A33",
         "custom-violet-200": "#373E57",
         "custom-violet-300": "#151728",
+        "custom-blue-100": "#116CD6",
       },
     },
   },

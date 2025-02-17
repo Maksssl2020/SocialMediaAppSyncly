@@ -4,8 +4,7 @@ import { LoginRequest } from "../../models/LoginRequest.ts";
 import { ApiError } from "../../models/ApiError.ts";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/AuthenticationSlice.ts";
-import { useNavigate } from "react-router-dom";
-import { RootNames } from "../../constants/rootNames.ts";
+import { AuthenticationResponse } from "../../models/AuthenticationResponse.ts";
 
 type UseLoginUserMutationProps = {
   onSuccess?: () => void;
@@ -17,18 +16,15 @@ export const useLoginUserMutation = ({
   onError,
 }: UseLoginUserMutationProps) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { mutate: loginUser, isLoading: loggingUser } = useMutation({
     mutationKey: ["loginUser"],
     mutationFn: (loginData: LoginRequest) => LoginUser(loginData),
-    onSuccess: (data) => {
-      console.log(data);
-
+    onSuccess: (data: AuthenticationResponse) => {
       dispatch(
         login({
           accessToken: data.accessToken,
-          username: data.userName,
+          username: data.username,
           userId: data.userId,
         }),
       );

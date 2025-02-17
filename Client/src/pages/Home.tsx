@@ -1,4 +1,3 @@
-import React from "react";
 import MainTabsSidebar from "../components/sidebar/MainTabsSidebar.tsx";
 import FriendsSidebar from "../components/sidebar/FriendsSidebar.tsx";
 import UserIcon from "../icons/UserIcon.tsx";

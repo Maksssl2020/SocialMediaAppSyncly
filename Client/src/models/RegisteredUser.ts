@@ -4,7 +4,7 @@ export interface RegisteredUser {
   email: string;
   firstName: string;
   lastName: string;
-  gender: number;
+  gender: string;
   country: string;
   city: string;
   dateOfBirth: Date;

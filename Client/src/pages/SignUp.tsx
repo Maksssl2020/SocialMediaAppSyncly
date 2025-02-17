@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -6,16 +5,22 @@ import { RegisterValidator } from "../validators/RegisterValidator.ts";
 import AuthenticationDataInput from "../components/input/AuthenticationDataInput.tsx";
 import { useRegisterUserMutation } from "../hooks/mutations/useRegisterUserMutation.ts";
 import { RegisterRequest } from "../models/RegisterRequest.ts";
+import toast from "react-hot-toast";
+import GenderSelect from "../components/select/GenderSelect.tsx";
 
 const SignUp = () => {
   const { register, handleSubmit, getValues, reset, formState } = useForm({
     resolver: yupResolver(RegisterValidator),
   });
   const { errors } = formState;
-  const { registerUser, registeringUser } = useRegisterUserMutation();
+  const { registerUser, registeringUser } = useRegisterUserMutation(() => {
+    toast.success("User registered successfully.");
+    reset();
+  });
 
   console.log(getValues("username"));
   console.log(errors["userName"]);
+
   const data = [
     {
       type: "text",
@@ -74,9 +79,7 @@ const SignUp = () => {
   ];
 
   const submit = (data: RegisterRequest) => {
-    console.log(data);
     registerUser(data);
-    reset();
   };
 
   if (registeringUser) {
@@ -123,25 +126,10 @@ const SignUp = () => {
               errors={data.errors}
             />
           ))}
-          <motion.select
-            whileFocus={{
-              backgroundColor: "#1B1C25",
-              borderColor: "#F8F9FC",
-              color: "#F8F9FC",
-            }}
-            style={{
-              backgroundColor: "#00000000",
-              borderColor: "#AEAFB8",
-              color: "#AEAFB8",
-            }}
-            aria-placeholder={"Gender"}
+          <GenderSelect
             className={"h-[50px] w-full rounded-xl border-2"}
-            {...register("gender")}
-          >
-            <option>Female</option>
-            <option>Male</option>
-            <option>Other</option>
-          </motion.select>
+            register={register("gender")}
+          />
           <motion.button
             whileHover={{
               backgroundColor: "#F8F9FC",

@@ -3,25 +3,27 @@ import { RegisterUseCall } from "../../api-calls/Authentication.ts";
 import { RegisterRequest } from "../../models/RegisterRequest.ts";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/AuthenticationSlice.ts";
+import { AuthenticationResponse } from "../../models/AuthenticationResponse.ts";
+import toast from "react-hot-toast";
 
-export const useRegisterUserMutation = () => {
+export const useRegisterUserMutation = (onSuccessCallback: Function) => {
   const dispatch = useDispatch();
 
   const { mutate: registerUser, isLoading: registeringUser } = useMutation({
     mutationKey: ["registerUserMutation"],
     mutationFn: (registerRequest: RegisterRequest) =>
       RegisterUseCall(registerRequest),
-    onSuccess: (data) => {
-      console.log(data);
+    onSuccess: (data: AuthenticationResponse) => {
+      onSuccessCallback();
       dispatch(
         login({
-          accessToken: data.token,
-          username: data.userName,
+          accessToken: data.accessToken,
+          username: data.username,
         }),
       );
     },
     onError: (error) => {
-      throw error;
+      toast.error(error.response.data);
     },
   });
 

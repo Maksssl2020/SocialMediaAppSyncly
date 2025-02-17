@@ -1,4 +1,3 @@
-import React from "react";
 import Sidebar from "./Sidebar.tsx";
 import UserIcon from "../../icons/UserIcon.tsx";
 import { useUserQuery } from "../../hooks/queries/useUserQuery.ts";
